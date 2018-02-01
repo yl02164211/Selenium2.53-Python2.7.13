@@ -47,7 +47,12 @@ header ={
 	'X-Requested-With':'XMLHttpRequest'
 }
 
-# Start to spider positions from page 1 to page 3
+proxies={
+'http':'http://proxy.houston.hpecorp.net:8080',
+'https':'https://proxy.houston.hpecorp.net:8080'
+}
+
+# Start to spider positions from page 1 to page 5
 companies = []
 positions=[]
 positionLablesgroup = []
@@ -56,14 +61,14 @@ workyears = []
 educations = []
 createdate = [] 
 
-for i in range(1,4):
+for i in range(1,5):
 	data = {
 		'first':'true',
 		'pn':str(i),
 		'kd':job_name
 	}
 	print "Request:", data
-	response = requests.post(url, headers = header, data= data)
+	response = requests.post(url, headers = header, data= data, proxies = proxies)
 	if response.status_code ==200:
 		html = response.content
 		json_html = json.loads(html)

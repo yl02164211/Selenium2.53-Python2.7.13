@@ -8,4 +8,12 @@ def add(x, y, f):
 def f(x):
     return float(x)**0.5
 
-print add(25, 9, f)
+a = None
+
+if a:
+	print "True"
+else:
+	print "False"
+
+a = '1234567890-wertyui'
+print a.endswith('i')
