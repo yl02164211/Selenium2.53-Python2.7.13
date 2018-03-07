@@ -9,7 +9,7 @@ pwd = '!QAZ2wsx'
 dbschema = 'demo'
 connect = MySQLdb.connect(host,user, pwd, dbschema, charset='utf8')
 cursor = connect.cursor()
-sql = 'select * from position;'
+sql = 'select * from order_jd_d;'
 print sql
 cursor.execute(sql)
 print "Total Count =%d"%cursor.rowcount
