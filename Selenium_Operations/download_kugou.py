@@ -2,7 +2,7 @@
 
 import requests
 import re
-from urllib import urlencode
+from urllib.parse import urlencode
 import json
 
 baseurl = 'http://www.kugou.com/yy/singer/home/3520.html'
@@ -24,7 +24,7 @@ songslist = songsinfo[0]
 # print songslist
 
 songsTotalCount = re.findall(r'songsTotal = (.*?),', songslist,re.S|re.I)
-print songsTotalCount[0].replace("'",'')
+print(songsTotalCount[0].replace("'",''))
 # songsCount = songsTotalCount[0].replace("'",'')
 
 songsDataNode = re.findall(r'songsdata = (.*?);',songslist,re.S|re.I )
@@ -62,7 +62,7 @@ ting_json = json.loads(ting_req.text)
 
 music_url = ting_json['data']['play_url']
 music_name = ting_json['data']['audio_name'] + '.mp3'
-print music_name
+print(music_name)
 req = requests.get(music_url)
 with open(music_name,'wb') as f:
 	f.write(req.content)
